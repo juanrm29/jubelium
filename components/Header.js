@@ -11,8 +11,7 @@ const NavBar = () => {
   const links = [
     { id: 0, name: locale.NAV.INDEX, to: BLOG.path || '/', show: true },
     { id: 1, name: locale.NAV.ABOUT, to: '/about', show: BLOG.showAbout },
-    { id: 2, name: locale.NAV.RSS, to: '/feed', show: true, external: true },
-    { id: 3, name: locale.NAV.SEARCH, to: '/search', show: true }
+    { id: 2, name: locale.NAV.SEARCH, to: '/search', show: true }
   ]
   return (
     <div className="flex-shrink-0">
@@ -83,7 +82,7 @@ export default function Header ({ navBarTitle, fullWidth }) {
 
   return (
     <>
-      <div className="observer-element h-4 md:h-12" ref={sentinelRef}></div>
+      <div className="h-4 observer-element md:h-12" ref={sentinelRef}></div>
       <div
         className={`sticky-nav group m-auto w-full h-6 flex flex-row justify-between items-center mb-2 md:mb-12 py-8 bg-opacity-60 ${
           !fullWidth ? 'max-w-3xl px-4' : 'px-4 md:px-24'
@@ -94,7 +93,7 @@ export default function Header ({ navBarTitle, fullWidth }) {
       >
         <svg
           viewBox="0 0 24 24"
-          className="caret w-6 h-6 absolute inset-x-0 bottom-0 mx-auto pointer-events-none opacity-30 group-hover:opacity-100 transition duration-100"
+          className="absolute inset-x-0 bottom-0 w-6 h-6 mx-auto transition duration-100 pointer-events-none caret opacity-30 group-hover:opacity-100"
         >
           <path
             d="M12 10.828l-4.95 4.95-1.414-1.414L12 8l6.364 6.364-1.414 1.414z"
@@ -129,13 +128,13 @@ const HeaderName = forwardRef(function HeaderName ({ siteTitle, siteDescription,
   return (
     <p
       ref={ref}
-      className="header-name ml-2 font-medium text-gray-600 dark:text-gray-300 capture-pointer-events grid-rows-1 grid-cols-1 items-center"
+      className="items-center grid-cols-1 grid-rows-1 ml-2 font-medium text-gray-600 header-name dark:text-gray-300 capture-pointer-events"
       onClick={onClick}
     >
-      {postTitle && <span className="post-title row-start-1 col-start-1">{postTitle}</span>}
-      <span className="row-start-1 col-start-1">
+      {postTitle && <span className="col-start-1 row-start-1 post-title">{postTitle}</span>}
+      <span className="col-start-1 row-start-1">
         <span className="site-title">{siteTitle}</span>
-        <span className="site-description font-normal">, {siteDescription}</span>
+        <span className="font-normal site-description">, {siteDescription}</span>
       </span>
     </p>
   )
